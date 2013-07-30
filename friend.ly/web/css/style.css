@@ -1,0 +1,493 @@
+css /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html {
+	background: url("../images/grey_wall.png") repeat;
+}
+
+body {
+	width: 960px;
+	height: 100%;
+	margin: 0 auto;
+	background: white;
+	box-shadow: 0px 0px 30px black;
+}
+
+/*!body*/
+
+#header {
+	float: left;
+	width: 100%;
+	background-image: url("../images/dark_linen.png");
+	background-repeat: repeat;
+	padding: 5px 0;
+	height: 57px;
+	overflow: hidden;
+}
+
+#header * {
+	float: left;
+}
+
+#header form {
+	float: right;
+	margin: 10px 10px 0 0;
+}
+
+#header form input[type='text'], input[type='password'] {
+	margin: 4px 3px 0;
+	height: 20px;
+}
+
+#header form h2 {
+	color: white;
+	float: left;
+	width: 250px;
+	font: 18px "Helvetica Neue";
+	text-align: right;
+	margin: 6px 0;
+	padding-right: 15px;
+}
+
+#header img {
+	margin: 0 0 0 7px;
+}
+
+#header h1 {
+	font: 40px "Nexa Light";
+	padding: 8px 0 0 8px;
+	width: 350px;
+	color: white;
+}
+
+div#container {
+	clear: both;
+	width: 100%;
+	overflow: hidden;
+}
+
+div.cta {
+	background: url("../images/cta_bg.png") no-repeat;
+	float: left;
+	width: 960px;
+	height: 350px;
+	overflow: hidden;
+}
+
+/*!register*/
+
+div.cta .register_title {
+	float: right;
+	width: 300px;
+	margin: 40px 10px 0 40px;
+	background: rgba(0,0,0,0.72);
+}
+
+div.cta .register_title h1 {
+	float: right;
+	padding-top: 8px;
+	font: 23px "Gill Sans Mt";
+	color: white;
+}
+
+div.cta .register_title img {
+	float: right;
+	width: 38px;
+}
+
+div.cta .register {
+	clear: both;
+	width: 300px;
+	height: 220px;
+	overflow: hidden;
+	float: right;
+	margin-right: 10px;
+	background: rgba(0,0,0,0.72);
+}
+
+div.cta .register form {
+	padding: 30px 0;
+}
+
+div.cta .register input {
+	float: left;
+	width: 75%;
+	height: 30px;
+	padding-left: 10px;
+	border-radius: 8px;
+	border: none;
+	font: 18px "Gill Sans Mt";
+	margin: 5px 0 0 35px;
+}
+
+div.cta .register input[type='submit'] {
+	width: 40%;
+	height: 45px;
+	float: right;
+	margin: 10px 30px 0 0;
+	clear: both;
+}
+
+/*!columns*/
+
+div.information {
+	background:-webkit-linear-gradient(#2c3e51 -20%, #000000 100%);
+	float: left;
+	width: 100%;
+	height: 300px;
+	color: white;
+	overflow: hidden;
+}
+
+div.additional {
+	margin: 30px 0;
+	text-align: center;
+	font: 18px "Gill Sans Mt";
+}
+
+span.free {
+	color: #66CCFF;
+	font-weight: bold;
+	font-size: 24px;
+	font-variant: small-caps
+}
+
+div.column {
+	float: left;
+	width: 310px;
+	margin: 20px 5px 0;
+}
+
+div.column h2 {
+	float: right;
+	width: 90%;
+	text-align: center;
+	padding-top: 2px;
+	font: 24px "Gill Sans MT";
+}
+
+div.column img {
+	float: left;
+	width: 10%;
+}
+
+div.column p {
+	clear: both;
+	font: 14px "Lucida Grande";
+	line-height: 24px;
+	padding: 0 10px;
+	margin: 50px 0;
+}
+
+footer {
+	clear: both;
+	width: 100%;
+	padding: 5px 0;
+	text-align: center;
+	background-image: url("../images/dark_linen.png");
+	background-repeat: repeat;
+	font: 14px "Lucida Grande";
+	color: white;
+}
+
+/*!application styles*/
+
+#app_container {
+	float: left;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+/*window*/
+#chat_window {
+	float: left;
+	position: relative;
+	width: 730px;
+}
+
+#active_user {
+	margin: 10px 0 0 0;
+	float: left;
+	width: 100%;
+}
+
+#active_user hr {
+	width: 100%;
+	height: 2px;
+	background-color: #1db7ff;
+	border: none;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#active_user h3 {
+	text-align: center;
+	font: 24px "Gill Sans MT";
+}
+
+#text_input_box {
+	width: 100%;
+	float: left;
+	position: absolute;
+	bottom: 0px;
+	border-top: 2px solid #1db7ff;
+	margin-top: 50px;
+	padding: 10px 0;
+	height: 40px;
+	overflow: hidden;
+}
+
+#text_input_box #message_box {
+	margin-left: 10px;
+	width: 200px;
+	height: 34px;
+	float: left;
+	padding-left: 15px;
+	font: 18px "Gill Sans MT";
+	border: none;
+	-webkit-transition: all 1s ease-in;
+	background: url("../images/text_input_bg.png") no-repeat 0px 25px;
+}
+
+#text_input_box #message_box:focus {
+	width: 644px;
+	outline: none;
+}
+
+#text_input_box button {
+	float: left;
+	margin-left: 10px;
+	width: 40px;
+	height: 40px;
+	border: none;
+	background: url("../images/arrow-round-right.png") no-repeat;
+	background-size: cover;
+}
+
+.message_seperator {
+	margin: 0 auto;
+	width: 100%;
+	height: 2px;
+	background-color: #1db7ff;
+	border: none; 
+}
+
+.message#right {
+	float: right;
+	width: 95%;
+	padding: 10px 0 10px 5%;
+	background: url("../images/chat_head_left.png") no-repeat left center;
+	background-size: contain;
+}
+
+.message#right .date {
+	float: left;
+	width: 20%;
+	text-align: left;
+	font: 12px "Helvetica Neue";
+}
+
+.message#right .sender {
+	float: left;
+	width: 80%;
+	font: 12px "Helvetica Neue";
+}
+
+.message#right h2 {
+	float: left;
+	width: 100%;
+	margin-top: 8px;
+	font: 24px "Helvetica Neue";
+}
+
+.message#left {
+	float: left;
+	width: 95%;
+	padding: 10px 5% 10px 0;
+	background: url("../images/chat_head_right.png") no-repeat right center;
+	background-size: contain;
+}
+
+.message#left .date {
+	float: right;
+	width: 20%;
+	text-align: right;
+	font: 12px "Helvetica Neue";
+}
+
+.message#left .sender {
+	float: right;
+	text-align: right;
+	width: 80%;
+	font: 12px "Helvetica Neue";
+}
+
+.message#left h2 {
+	float: right;
+	text-align: right;
+	margin-top: 8px;
+	width: 100%;
+	font: 24px "Helvetica Neue";
+}
+
+/*sidebar*/
+#sidebar {
+	float: left;
+	width: 228px;
+	border-left: 2px solid #1db7ff;
+	background:-webkit-linear-gradient(#022936 0%, #023342 100%);
+}
+
+.contact {
+	float: left;
+	width: 228px;
+	padding: 10px 0;
+	background: none;
+	border-radius: 10px;
+	-webkit-transition: background 0.9s ease-out, border-radius 0.9s ease-in;
+}
+
+.contact:hover {
+	background-color: rgba(112,205,255,0.3);
+	border-radius: 10px;
+	-webkit-transition: all 0.2s ease-in;
+}
+
+.contact h4 {
+	float: left;
+	width: 187px;
+	height: 30px;
+	padding-left: 5px;
+	color: white;
+	font: 16pt "Gill Sans Mt"
+}
+
+.contact a img {
+	float: left;
+	width: 30px;
+	margin: 0 3px;
+}
+
+#new_contact {
+	float: left;
+	width: 100%;
+}
+
+#new_contact hr {
+	margin: 10px auto;
+	width: 75%;
+	height: 2px;
+	background-color: #1db7ff;
+	border: none; 
+}
+
+#new_contact img {
+	display: block;
+	margin: 0 auto;
+}
+
+/*!button styles*/
+
+.sign_up {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #66FFFF), color-stop(1, #6699FF) );
+	background:-moz-linear-gradient( center top, #66FFFF 5%, #6699FF 100% );
+	background-color:#66FFFF;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	display:block;
+	color:#000000;
+	font-family:Trebuchet MS;
+	font-size:18px;
+	font-weight:bold;
+	padding:10px 24px;
+	text-decoration:none;
+	border: 0;
+	margin: 0 auto;
+}.sign_up:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #6699FF), color-stop(1, #66FFFF) );
+	background:-moz-linear-gradient( center top, #6699FF 5%, #66FFFF 100% );
+	background-color:#0d8502;
+}.sign_up:active {
+	position:relative;
+	border: 1px solid black;
+	top:1px;
+}
+
+.login {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #66FFFF), color-stop(1, #6699FF) );
+	background:-moz-linear-gradient( center top, #66FFFF 5%, #6699FF 100% );
+	background-color:#ffff0a;
+	-moz-border-radius:6px;
+	border: none;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	display:inline-block;
+	color:#000000;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	padding:5px 20px;
+	text-decoration:none;
+}.login:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #6699FF), color-stop(1, #66FFFF) );
+	background:-moz-linear-gradient( center top, #6699FF 5%, #66FFFF 100% );
+	background-color:#8a8a03;
+}.login:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+
+
+
+

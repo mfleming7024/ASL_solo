@@ -17,6 +17,7 @@
 			</div>
 			<div class="register">
 				<form id="register_form" enctype="multipart/form-data" method="post" action="/user/perform_register">
+					<p><?php if(isset($error)){echo $error;} ?></p>
 					<input type="text" name="username" id="r_user_name" placeholder="Username" />
 					<input type="password" name="password" id="r_password" placeholder="Password" />
 					<input type="email" name="email" id="r_email" placeholder="E-mail" />

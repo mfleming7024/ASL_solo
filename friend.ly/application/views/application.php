@@ -1,8 +1,8 @@
 <div id="header">
-	    <a href="/"><img src="/images/logo.png" alt="blah" />
-		<h1>Friend.ly</h1></a>
+	    <img src="/images/logo.png" alt="blah" />
+		<h1>Friend.ly</h1>
 		<form id="login_form" method="post" action="/user/logout">
-			<h2>Welcome, <?php echo $this->session->userdata("username");  ?></h2>
+			<?php echo "<h2>Welcome, <a href='/user/update/" . $this->session->userdata('username') . "'>" . $this->session->userdata("username") . "</a></h2>" ?>
 			<input type="submit" class="login" id="login_btn" value="Logout" />
 		</form>
     </div>
@@ -17,21 +17,13 @@
 						<hr />
 					</div>";
 			} else {
-				foreach($messages as $message) {
-					if ($message["recieverId"] == $this->session->userdata("userId")) {
-						
-					} else {
-						$reciever = $message["recieverId"];
-					}
-				}
 				echo "
 					<div id='active_user'>
 						<h3>" . $username["username"] . "</h3>
-						<p><a href='/user/delete/" . $reciever . "'>Delete All Messages</a></p>						
+						<p><a href='/user/delete/" . $this->uri->segment(3) . "'>Delete All Messages</a></p>						
 						<hr />
 					</div>";
 					
-				
 				foreach($messages as $message) {
 					if ($message["recieverId"] == $this->session->userdata("userId")) {
 						echo "
@@ -49,7 +41,6 @@
 			    			<hr class='message_seperator'/>";
 			    	}; 
 				}
-				
 			}
 			?>
 			

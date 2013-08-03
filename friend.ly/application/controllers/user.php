@@ -4,7 +4,6 @@ class User extends CI_Controller {
 
     function __construct(){
         parent::__construct();
-        //$this->authenticate();
         $this->load->helper(array('form', 'url'));
     }
 
@@ -13,18 +12,9 @@ class User extends CI_Controller {
         redirect('http://friend.ly');
     }
 
-    function authenticate()
-    {
-        if (!$this->session->userdata('is_logged_in'))
-        {
-            redirect('home/require_login');
-        }
-    }
-
     function perform_register(){
         $this->load->library('form_validation');
 
-        //fieldname , errormessage, validation rules
         $this->form_validation->set_rules('username','Username','trim|required');
         $this->form_validation->set_rules('password','Password', 'trim|required');
         $this->form_validation->set_rules('email','Email', 'trim|required|valid_email');
@@ -33,7 +23,7 @@ class User extends CI_Controller {
         if($this->form_validation->run() == FALSE)
         {
 			$data['main'] = 'home';
-			$data["error"] = "Unsuccessful login";
+			$data["error"] = "Unsuccessful Register";
 			
             $this->load->view('includes/template', $data);
         }else{
@@ -111,7 +101,7 @@ class User extends CI_Controller {
     function message($recieverUsername) {
 	    $this->load->model("user_model");
 	    
-	    $message = $this->input->post("message");
+	    $message = stripslashes($this->input->post("message"));
 	    $recieverId = $this->user_model->get_userId($recieverUsername);
 	    $senderId = $this->session->userdata("userId");
 
@@ -124,11 +114,17 @@ class User extends CI_Controller {
 	    
 	    $senderId = $this->session->userdata("userId");
 
-	    $result = $this->user_model->delete_messages($senderId, $recieverId);
+	    $this->user_model->delete_messages($senderId, $recieverId);
 	    
-	    var_dump($result);
-/* 	    redirect("/user/chat/" . $recieverId["userId"]); */
-
+	    redirect("/user/chat/" . $recieverId["userId"]); 
+    }
+    
+    function update($username) {
+	    $this->load->model("user_model");
+	    
+	    $this->user_model->edit_user($username);
+	    
+	    $this->logout();
     }
 
 }

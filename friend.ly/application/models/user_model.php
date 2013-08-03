@@ -55,7 +55,7 @@ class User_model extends CI_Model{
     }
     
     function get_messages($from, $to) {
-	   	$sql =  "select message, senderId, recieverId, date from messages where (senderId = " . $from . " and recieverId = " . $to . ") or (senderId = " . $to . " and recieverId = " . $from . ")";
+	   	$sql =  "select message, senderId, recieverId, date from messages where (senderId = " . $from . " and recieverId = " . $to . ") or (senderId = " . $to . " and recieverId = " . $from . ") order by messages.date asc;";
 
 	    
 	   	$query = $this->db->query($sql);
@@ -84,15 +84,15 @@ class User_model extends CI_Model{
     }
     
     function delete_messages($from, $to) {
-    	$data = array(
-    		"senderId" => $from,
-    		"recieverId" => $to
-    	);
-    	return $data;
-	    /*
-$this->db->where($data);
-	    $this->db->delete("messages");
-*/
+    	$sql = "delete from messages where (senderId = " . $from . " and recieverId = " . $to . ") or (senderId = " . $to . " and recieverId = " . $from . ")";
+    	
+    	$this->db->query($sql);
+    }
+    
+    function edit_user($username) {
+	    $sql = "update users set username = Updated Username where username = " . $username;
+
+	    $this->db->query($sql);
     }
 
 }

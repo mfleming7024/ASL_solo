@@ -11,8 +11,7 @@ $(function(){
 		$that.height($this.height());
 	} else {
 		$this.height($that.height());
-	}
-	
+	};
 	
 	var $container = $("#new_contact");
 	var $addBtn = $("#add_button");

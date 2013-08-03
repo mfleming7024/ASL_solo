@@ -14,7 +14,9 @@ class User_model extends CI_Model{
         return $new_user_insert_data;
     }
     
-    function get_contacts() {
+    function get_contacts($activeUser) {
+    	$data = array("userId != " => $activeUser);
+    	$this->db->where($data);
         $query = $this->db->get('users');
         return $query;
     }
@@ -53,7 +55,8 @@ class User_model extends CI_Model{
     }
     
     function get_messages($from, $to) {
-	   	$sql =  "select message, senderId, recieverId, date from messages where senderId = " . $from . " and recieverId = " . $to;
+	   	$sql =  "select message, senderId, recieverId, date from messages where (senderId = " . $from . " and recieverId = " . $to . ") or (senderId = " . $to . " and recieverId = " . $from . ")";
+
 	    
 	   	$query = $this->db->query($sql);
 	   	
@@ -78,6 +81,18 @@ class User_model extends CI_Model{
         );
 
         $this->db->insert('messages', $messageData);   
+    }
+    
+    function delete_messages($from, $to) {
+    	$data = array(
+    		"senderId" => $from,
+    		"recieverId" => $to
+    	);
+    	return $data;
+	    /*
+$this->db->where($data);
+	    $this->db->delete("messages");
+*/
     }
 
 }

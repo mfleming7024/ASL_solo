@@ -1,10 +1,11 @@
 <div id="header">
 	    <a href="/"><img src="/images/logo.png" alt="blah" />
 		<h1>Friend.ly</h1></a>
-		<form id="login_form" enctype="multipart/form-data" method="post" action="user/login">
+		<form id="login_form" enctype="multipart/form-data" method="post" action="/user/login">
 			<input type="text" name="username" id="username" placeholder="Username" />
 			<input type="password" name="password" id="password" placeholder="Password" />
 			<input type="submit" class="login" id="login_btn" value="Login" />
+			<p><?php if(isset($message)){echo $message;} ?></p>
 		</form>
     </div>
 

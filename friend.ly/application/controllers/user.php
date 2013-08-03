@@ -58,7 +58,7 @@ class User extends CI_Controller {
     function application() {
     	$this->load->model("user_model");
 		$data["main"] = "application";
-        $contactList = $this->user_model->get_contacts();
+        $contactList = $this->user_model->get_contacts($this->session->userdata("userId"));
     	$data["contacts"] = $contactList;
     	            	
         $this->load->view("includes/template", $data);    
@@ -68,20 +68,27 @@ class User extends CI_Controller {
     	$this->load->model("user_model");
     	$result = $this->user_model->login();
     	
-    	$contactList = $this->user_model->get_contacts();
-    	$data["contacts"] = $contactList;
-    	
-	    $userData = array(
-       		"userId" => $result["userId"],
-       		"username" => $result["username"],
-       		"password" => $result["password"]
-       	);
-       	
-       	$this->session->set_userdata($userData);
-
-		$data["main"] = "application";
-            	
-        $this->load->view("includes/template", $data);    
+    	if (!isset($result) || is_null($result)) {
+	    	$data["message"] = "Invalid Username or Password";
+	    	$data["main"] = "home";
+	 
+	        $this->load->view("includes/template", $data);
+    	} else {
+	    	$contactList = $this->user_model->get_contacts($result["userId"]);
+	    	$data["contacts"] = $contactList;
+	    	
+		    $userData = array(
+	       		"userId" => $result["userId"],
+	       		"username" => $result["username"],
+	       		"password" => $result["password"]
+	       	);
+	       	
+	       	$this->session->set_userdata($userData);
+	
+			$data["main"] = "application";
+	            	
+	        $this->load->view("includes/template", $data);   
+	   } 
     }
     
     function chat($id) {
@@ -93,7 +100,7 @@ class User extends CI_Controller {
     	$reciever = $this->user_model->get_username($id);
     	$data["username"] = $reciever;
     	
-    	$contactList = $this->user_model->get_contacts();
+    	$contactList = $this->user_model->get_contacts($this->session->userdata("userId"));
     	$data["contacts"] = $contactList;
     	
     	$data["main"] = "application";
@@ -110,6 +117,18 @@ class User extends CI_Controller {
 
 	    $this->user_model->send_message($senderId, $recieverId["userId"], $message);
 	    redirect("/user/chat/" . $recieverId["userId"]);
+    }
+    
+    function delete($recieverId) {
+	    $this->load->model("user_model");
+	    
+	    $senderId = $this->session->userdata("userId");
+
+	    $result = $this->user_model->delete_messages($senderId, $recieverId);
+	    
+	    var_dump($result);
+/* 	    redirect("/user/chat/" . $recieverId["userId"]); */
+
     }
 
 }
